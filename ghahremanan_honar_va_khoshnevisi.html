@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6848c7">
+<title>قهرمانان سرزمین هنر و خوشنویسی</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+:root{--ink:#29234b;--purple:#6848c7;--pink:#ff6b9d;--yellow:#ffd45c;--mint:#58d6b1;--blue:#61b8f5;--paper:#fffdf7}
+*{box-sizing:border-box}body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;color:var(--ink);background:linear-gradient(135deg,#f3eaff,#e8f8ff 55%,#fff3df);min-height:100vh}
+button{font:inherit;cursor:pointer;border:0}.app{max-width:1000px;margin:auto;padding:16px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.brand{font-weight:900;font-size:clamp(18px,3vw,26px);color:#5236a8}.school{background:#fff;padding:8px 14px;border-radius:30px;font-size:13px;box-shadow:0 5px 16px #49349b12}
+.stats{display:flex;gap:8px;flex-wrap:wrap}.stat{background:#fff;border-radius:16px;padding:8px 13px;font-weight:800;box-shadow:0 5px 16px #49349b12}
+.panel{background:#ffffffed;border:2px solid #fff;border-radius:28px;padding:clamp(18px,4vw,34px);margin-top:18px;box-shadow:0 18px 50px #47348b18}
+.hero{text-align:center;overflow:hidden;position:relative}.hero:before,.hero:after{content:"✦";position:absolute;color:#ffd45c;font-size:42px;animation:twinkle 2s infinite alternate}.hero:before{top:18px;right:7%}.hero:after{bottom:25px;left:8%}
+.pencil{font-size:86px;display:inline-block;animation:bob 2s infinite ease-in-out}.hero h1{font-size:clamp(25px,5vw,42px);margin:4px 0;color:#573ab1}.hero p{line-height:2;max-width:680px;margin:8px auto 18px}
+.primary,.secondary,.choice,.tile{border-radius:17px;padding:13px 20px;font-weight:800;transition:.18s}.primary{background:linear-gradient(135deg,#7657dc,#5235ae);color:white;box-shadow:0 7px 0 #3e2a8b}.primary:active{transform:translateY(4px);box-shadow:0 3px 0 #3e2a8b}.secondary{background:#f0eaff;color:#573ab1}.primary:disabled{opacity:.5;cursor:not-allowed}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:18px}.level{background:white;border:2px solid #eee8ff;border-radius:20px;padding:15px;text-align:right;display:flex;align-items:center;gap:12px}.level .emoji{font-size:32px}.level b{display:block}.level small{color:#817b9c}.level.done{border-color:#58d6b1;background:#f0fff9}
+.progress-wrap{height:12px;background:#ece8fa;border-radius:20px;overflow:hidden;margin:14px 0}.progress{height:100%;width:0;background:linear-gradient(90deg,#58d6b1,#61b8f5);transition:width .4s}
+.stage-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.stage-title{font-size:clamp(21px,4vw,30px);font-weight:900}.pill{background:#fff2c6;border-radius:30px;padding:6px 12px;font-weight:800;font-size:13px}
+.instruction{background:#f5f0ff;border-radius:16px;padding:12px 16px;line-height:1.9;margin:14px 0}.prompt{font-size:clamp(22px,4vw,30px);font-weight:900;text-align:center;margin:20px 0}
+.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(115px,1fr));gap:12px}.choice{background:#fff;border:3px solid #e8e1ff;min-height:76px;font-size:clamp(24px,5vw,34px);color:#443477;box-shadow:0 5px 0 #e6defa}.choice:hover,.tile:hover{transform:translateY(-3px);border-color:#9a83ed}.choice.correct{background:#e3fff4;border-color:#58d6b1}.choice.wrong{background:#fff0f3;border-color:#ff8bad}
+.feedback{min-height:48px;text-align:center;font-weight:800;padding:12px;margin-top:10px;border-radius:14px}.feedback.good{color:#13845e;background:#e7fff5}.feedback.try{color:#a64b6b;background:#fff0f4}
+.wordbank,.slots{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:15px 0}.tile{background:#fff;border:2px solid #dcd2ff;min-width:54px;font-size:25px;color:#49358e;box-shadow:0 4px 0 #e7e0fa}.tile.selected{background:#eee8ff;border-color:#795bd6}.slot{min-width:66px;min-height:62px;border:2px dashed #b6a7e9;border-radius:14px;background:#faf8ff;display:grid;place-items:center;font-size:25px;font-weight:900;cursor:pointer;padding:5px}.slot.filled{border-style:solid;background:#f0eaff}
+.samples{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.sample{background:white;border:3px solid #e7e0fa;border-radius:18px;padding:16px;text-align:center;cursor:pointer}.sample .hand{font-size:32px;line-height:1.8}.sample small{display:block;color:#77718f}.sample.selected{border-color:#58cba6;background:#edfff8}
+.drawing{font-size:92px;text-align:center;margin:10px}.canvas{width:100%;height:210px;background:#fffdf4;border:3px dashed #d8c9ff;border-radius:20px;display:grid;place-items:center;font-size:90px;margin:12px 0}
+.color-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.color{width:48px;height:48px;border-radius:50%;border:4px solid white;box-shadow:0 0 0 2px #ddd;cursor:pointer}.color.active{box-shadow:0 0 0 4px #6848c7}
+.footer{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:20px}.hidden{display:none!important}.medal{font-size:64px}.certificate{text-align:center;background:linear-gradient(135deg,#fff8d9,#f5eaff);border:4px dashed #e7bd49}.tiny{font-size:12px;color:#817b9c;text-align:center;margin:18px}
+@keyframes bob{50%{transform:translateY(-9px) rotate(3deg)}}@keyframes twinkle{to{transform:rotate(25deg) scale(1.3);opacity:.5}}
+@media(max-width:560px){.app{padding:10px}.panel{border-radius:22px}.stats{width:100%}.stat{flex:1;text-align:center}.footer button{flex:1}.level{padding:11px}}
+</style>
+</head>
+<body>
+<div class="app">
+ <header class="top"><div class="brand">🎨 سرزمین هنر و خوشنویسی</div><div class="school">دبستان البرز • پایه سوم • خانم جعفری</div><div class="stats"><div class="stat">⭐ <span id="score">۰</span></div><div class="stat">🏅 <span id="badges">۰</span> نشان</div></div></header>
+ <section id="home" class="panel hero">
+  <div class="pencil">✏️</div><h1>قهرمانان سرزمین هنر و خوشنویسی</h1>
+  <p>سلام هنرمند کوچولو! حروف از هم جدا شده‌اند، کلمه‌ها گم شده‌اند و رنگ‌ها از سرزمین هنر فرار کرده‌اند. آماده‌ای با بازی و خلاقیت، سرزمین را نجات بدهی؟</p>
+  <button class="primary" onclick="startGame()">🚀 شروع ماجراجویی</button>
+  <div class="levels" id="levelList"></div>
+  <div class="tiny">برای بازی به ثبت‌نام نیاز نیست. ستاره‌ها در همین صفحه و تا زمان بستن آن نگه داشته می‌شوند.</div>
+ </section>
+ <section id="game" class="panel hidden">
+  <div class="stage-head"><div><div class="stage-title" id="stageTitle"></div><div id="stageSub" class="tiny" style="text-align:right;margin:2px 0"></div></div><div class="pill">مرحله <span id="stageNum">۱</span> از ۶</div></div>
+  <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+  <div id="activity"></div>
+  <div id="feedback" class="feedback"></div>
+  <div class="footer"><button class="secondary" onclick="goHome()">🏠 نقشه سرزمین</button><button class="primary" id="nextBtn" onclick="nextStage()" disabled>مرحله بعدی ←</button></div>
+ </section>
+ <section id="finish" class="panel certificate hidden">
+  <div class="medal">🏆</div><h1>آفرین قهرمان هنرمند! 🌟</h1>
+  <p style="line-height:2">تو با دقت، خلاقیت و خوش‌خطی توانستی تمام مأموریت‌ها را انجام دهی.<br>یادت باشد: هنر یعنی زیبا دیدن دنیا و خوشنویسی یعنی زیبا نوشتن اندیشه‌ها.</p>
+  <h2>امتیاز نهایی: <span id="finalScore">۰</span> ⭐</h2><h3 id="rank"></h3>
+  <p>با مهر، خانم جعفری<br>مدرسه البرز</p>
+  <button class="primary" onclick="restart()">🔁 بازی دوباره</button> <button class="secondary" onclick="window.print()">🖨️ چاپ افتخارنامه</button>
+ </section>
+</div>
+<script>
+const fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const stages=[
+ {name:'شکارچی حروف',icon:'🔎',sub:'حرف درست را پیدا کن',type:1},
+ {name:'کلمه‌ساز حرفه‌ای',icon:'🧩',sub:'حروف را کنار هم بچین',type:2},
+ {name:'استاد خوش‌خط',icon:'✍️',sub:'نوشته خواناتر را انتخاب کن',type:3},
+ {name:'نقاشی با حروف',icon:'🖍️',sub:'از یک حرف، یک تصویر بساز',type:4},
+ {name:'جمله طلایی',icon:'📜',sub:'کلمه‌ها را مرتب کن',type:5},
+ {name:'استاد کوچک هنر',icon:'🖼️',sub:'اثر هنری را کامل کن',type:6}
+];
+let score=0,badges=0,current=0,completed=[],locked=false,selected=[],color='#ff6b9d';
+const $=id=>document.getElementById(id);
+function updateStats(){$('score').textContent=fa(score);$('badges').textContent=fa(badges);$('levelList').innerHTML=stages.map((s,i)=>`<div class="level ${completed.includes(i)?'done':''}"><span class="emoji">${completed.includes(i)?'🏅':s.icon}</span><div><b>${s.name}</b><small>${completed.includes(i)?'با موفقیت انجام شد':'ماموریت در انتظار توست'}</small></div></div>`).join('')}
+function startGame(){ $('home').classList.add('hidden');$('finish').classList.add('hidden');$('game').classList.remove('hidden');current=0;renderStage()}
+function goHome(){$('game').classList.add('hidden');$('finish').classList.add('hidden');$('home').classList.remove('hidden');updateStats()}
+function restart(){score=0;badges=0;completed=[];selected=[];updateStats();startGame()}
+function setup(title,sub){locked=false;selected=[];$('stageTitle').textContent=stages[current].icon+' '+title;$('stageSub').textContent=sub;$('stageNum').textContent=fa(current+1);$('progress').style.width=(current/6*100)+'%';$('feedback').textContent='';$('feedback').className='feedback';$('nextBtn').disabled=true}
+function correct(msg='آفرین! پاسخ درست بود. یک ستاره برای تو! ⭐'){if(locked)return;locked=true;score+=10;$('feedback').textContent=msg;$('feedback').className='feedback good';$('nextBtn').disabled=false;updateStats()}
+function wrong(msg='یک بار دیگر فکر کن؛ تو می‌توانی! 💪'){$('feedback').textContent=msg;$('feedback').className='feedback try'}
+function renderStage(){const s=stages[current];setup(s.name,s.sub);let a=$('activity');
+ if(current===0){a.innerHTML=`<div class="instruction">مدادک کوچولو می‌پرسد: «کدام کارت، حرف <b>پ</b> را نشان می‌دهد؟» به نقطه‌ها خوب دقت کن.</div><div class="prompt">حرف «پ» را شکار کن!</div><div class="options">${['ب','پ','ت','ث'].map(x=>`<button class="choice" onclick="pickLetter(this,'${x}')">${x}</button>`).join('')}</div>`}
+ if(current===1){a.innerHTML=`<div class="instruction">حروف زیر را به ترتیب درست انتخاب کن تا کلمه «کتاب» ساخته شود. اگر اشتباه انتخاب کردی، روی جایگاه پرشده بزن تا برگردد.</div><div class="prompt">کلمه را بساز: کتاب</div><div class="slots" id="slots">${[0,1,2,3].map((_,i)=>`<div class="slot" id="slot${i}" onclick="removeSlot(${i})">؟</div>`).join('')}</div><div class="wordbank">${['ب','ک','ا','ت'].map((x,i)=>`<button class="tile" id="tile${i}" onclick="addLetter(${i},'${x}')">${x}</button>`).join('')}</div><div style="text-align:center"><button class="secondary" onclick="resetWord()">از نو بچین</button> <button class="primary" onclick="checkWord()">بررسی کلمه</button></div>`}
+ if(current===2){a.innerHTML=`<div class="instruction">به سه نمونه نگاه کن. کدام نوشته خواناتر است و فاصله‌ی حروف و کلمه‌ها در آن بهتر رعایت شده؟</div><div class="samples"><div class="sample" onclick="pickSample(this,false)"><div class="hand" style="letter-spacing:-5px;transform:rotate(-5deg)">دوستی</div><small>نمونه‌ی اول</small></div><div class="sample" onclick="pickSample(this,true)"><div class="hand" style="letter-spacing:3px">دوستی</div><small>نمونه‌ی دوم</small></div><div class="sample" onclick="pickSample(this,false)"><div class="hand" style="opacity:.55;letter-spacing:8px">دوستی</div><small>نمونه‌ی سوم</small></div></div>`}
+ if(current===3){a.innerHTML=`<div class="instruction">هنرمند! حرف «ب» را به یک قایق بامزه تبدیل کن. یکی از ایده‌ها را انتخاب کن و بعد رنگ دلخواهت را بزن.</div><div class="prompt">حرف «ب» چه چیزی می‌تواند بشود؟</div><div class="options"><button class="choice" onclick="chooseDrawing(this,'⛵')">⛵ قایق</button><button class="choice" onclick="chooseDrawing(this,'🐟')">🐟 ماهی</button><button class="choice" onclick="chooseDrawing(this,'🌙')">🌙 ماه</button></div><div class="canvas" id="canvas">ب</div><div class="color-row">${['#ff6b9d','#61b8f5','#58d6b1','#ffd45c','#9b7bea'].map(c=>`<button class="color" style="background:${c}" onclick="paint('${c}',this)" aria-label="انتخاب رنگ"></button>`).join('')}</div><div style="text-align:center;margin-top:14px"><button class="primary" onclick="finishDrawing()">ثبت اثر هنری</button></div>`}
+ if(current===4){a.innerHTML=`<div class="instruction">کلمه‌ها را با لمس کردن به ترتیب درست انتخاب کن تا جمله‌ی طلایی ساخته شود.</div><div class="prompt">جمله: «مهربانی دنیا را زیباتر می‌کند.»</div><div class="slots" id="slots">${Array.from({length:5},(_,i)=>`<div class="slot" id="slot${i}" onclick="removeSlot(${i})">؟</div>`).join('')}</div><div class="wordbank">${['زیباتر','مهربانی','می‌کند','دنیا','را'].map((x,i)=>`<button class="tile" id="tile${i}" onclick="addWord(${i},'${x}')">${x}</button>`).join('')}</div><div style="text-align:center"><button class="secondary" onclick="resetSentence()">از نو بچین</button> <button class="primary" onclick="checkSentence()">بررسی جمله</button></div>`}
+ if(current===5){a.innerHTML=`<div class="instruction">تابلوی باغ هنر هنوز کامل نشده است. کدام شکل برای جای خالی مناسب‌تر است؟ بعد رنگ دلخواهت را انتخاب کن.</div><div class="canvas" id="canvas">🌳　❔　🌼</div><div class="options"><button class="choice" onclick="pickShape(this,'🌷',true)">🌷 گل</button><button class="choice" onclick="pickShape(this,'🚗',false)">🚗 ماشین</button><button class="choice" onclick="pickShape(this,'📚',false)">📚 کتاب</button></div><div class="color-row" style="margin-top:16px">${['#ff6b9d','#61b8f5','#58d6b1','#ffd45c','#9b7bea'].map(c=>`<button class="color" style="background:${c}" onclick="paint('${c}',this)"></button>`).join('')}</div>`}
+}
+function pickLetter(el,x){if(x==='پ'){el.classList.add('correct');correct('درست پیدا کردی! سه نقطه‌ی حرف پ را شناختی. ⭐')}else{el.classList.add('wrong');wrong('به تعداد نقطه‌ها دقت کن. حرف پ سه نقطه دارد.')}} 
+let wordPick=[],wordIds=[];
+function addLetter(i,x){if(locked||wordIds.includes(i)||wordPick.length>=4)return;wordIds.push(i);wordPick.push(x);$('tile'+i).disabled=true;$('tile'+i).style.opacity='.35';$('slot'+(wordPick.length-1)).textContent=x;$('slot'+(wordPick.length-1)).classList.add('filled')}
+function removeSlot(i){if(locked||i>=wordPick.length)return;let id=wordIds[i];$('tile'+id).disabled=false;$('tile'+id).style.opacity='1';wordPick.splice(i);wordIds.splice(i);for(let j=0;j<4;j++){$('slot'+j).textContent=wordPick[j]||'؟';$('slot'+j).classList.toggle('filled',!!wordPick[j])}}
+function resetWord(){wordPick=[];wordIds=[];for(let i=0;i<4;i++){$('tile'+i).disabled=false;$('tile'+i).style.opacity='1';$('slot'+i).textContent='؟';$('slot'+i).classList.remove('filled')}}
+function checkWord(){if(wordPick.length!==4){wrong('چهار حرف را انتخاب کن.');return}if(wordPick.join('')==='کتاب')correct('آفرین! کلمه‌ی «کتاب» را درست ساختی. 📚');else wrong('ترتیب حروف را دوباره بررسی کن.')}
+function pickSample(el,ok){if(locked)return;document.querySelectorAll('.sample').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');ok?correct('انتخاب خوبی بود! نوشته‌ی خوانا و مرتب، چشم‌نواز است.'):wrong('به خوانایی، نظم و فاصله‌ی مناسب حروف توجه کن.')}
+let chosenDrawing='';
+function chooseDrawing(el,x){if(locked)return;chosenDrawing=x;document.querySelectorAll('#activity .choice').forEach(b=>b.classList.remove('correct'));el.classList.add('correct');$('canvas').textContent=x;$('canvas').style.color=color}
+function paint(c,el){color=c;document.querySelectorAll('.color').forEach(b=>b.classList.remove('active'));el.classList.add('active');let cv=$('canvas');if(cv)cv.style.color=c}
+function finishDrawing(){if(!chosenDrawing){wrong('اول یک ایده‌ی نقاشی انتخاب کن.');return}correct('چه ایده‌ی خلاقانه‌ای! اثر هنری تو ثبت شد. 🎨')}
+let sentencePick=[],sentenceIds=[];
+function addWord(i,x){if(locked||sentenceIds.includes(i)||sentencePick.length>=5)return;sentenceIds.push(i);sentencePick.push(x);$('tile'+i).disabled=true;$('tile'+i).style.opacity='.35';$('slot'+(sentencePick.length-1)).textContent=x;$('slot'+(sentencePick.length-1)).classList.add('filled')}
+function resetSentence(){sentencePick=[];sentenceIds=[];for(let i=0;i<5;i++){$('tile'+i).disabled=false;$('tile'+i).style.opacity='1';$('slot'+i).textContent='؟';$('slot'+i).classList.remove('filled')}}
+function checkSentence(){if(sentencePick.length!==5){wrong('همه‌ی کلمه‌ها را در جای مناسب قرار بده.');return}if(sentencePick.join('|')==='مهربانی|دنیا|را|زیباتر|می‌کند')correct('جمله‌ی طلایی کامل شد! مهربانی دنیا را زیباتر می‌کند. 💛');else wrong('جمله را از اول بخوان و ترتیب کلمه‌ها را اصلاح کن.')}
+function pickShape(el,x,ok){if(locked)return;document.querySelectorAll('#activity .choice').forEach(b=>b.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');if(ok){$('canvas').textContent='🌳　'+x+'　🌼';$('canvas').style.color=color;setTimeout(()=>correct('تابلوی باغ هنر کامل شد! تو یک استاد کوچک هنری هستی. 🌷'),250)}else wrong('به تصویر باغ نگاه کن؛ چه چیزی با گل و درخت هماهنگ است؟')}
+function nextStage(){if(!locked)return;if(!completed.includes(current)){completed.push(current);badges++;updateStats()}if(current<5){current++;renderStage()}else{ $('game').classList.add('hidden');$('finish').classList.remove('hidden');$('progress').style.width='100%';$('finalScore').textContent=fa(score);$('rank').textContent=score>=60?'نشان طلایی: قهرمان بزرگ هنر 🥇':'نشان افتخار: هنرمند پرتلاش 🌟'}}
+updateStats();
+</script>
+</body></html>
